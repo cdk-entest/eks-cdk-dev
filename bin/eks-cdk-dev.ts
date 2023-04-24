@@ -1,10 +1,10 @@
 import * as cdk from "aws-cdk-lib";
 import {
   AutoScalerHemlStack,
-  CdkEksFargateStack,
+  EksClusterStack,
   DeployChartStack,
   MetricServerStack,
-} from "../lib/eks-cdk-dev-stack";
+} from "../lib/eks-cluster-stack";
 import { VpcStack } from "../lib/network-stack";
 
 const app = new cdk.App();
@@ -18,7 +18,7 @@ const network = new VpcStack(app, "NetworkStack", {
   },
 });
 
-const eks = new CdkEksFargateStack(app, "CdkEksFargateStack", {
+const eks = new EksClusterStack(app, "EksClusterStack", {
   clusterName: "EksClusterLevel2",
   vpc: network.vpc,
   webImage: "",
