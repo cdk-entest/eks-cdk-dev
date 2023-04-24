@@ -2,7 +2,7 @@ import { aws_eks, aws_iam as iam } from "aws-cdk-lib";
 import { aws_eks as eks } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Tag } from "aws-cdk-lib";
-import { readYamlFile, readYamlFromDir } from "../utils/read_yaml";
+import { readYamlFile } from "../utils/read_yaml";
 import * as path from "path";
 
 /**
