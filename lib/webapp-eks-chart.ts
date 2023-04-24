@@ -6,6 +6,7 @@ import {
   KubeHorizontalPodAutoscalerV2Beta2,
 } from "../cdk8s-app/imports/k8s";
 import { Construct } from "constructs";
+import { k8s } from "cdk8s-plus-24";
 
 interface WebAppChartProps extends ChartProps {
   image: string;
@@ -40,6 +41,14 @@ export class WebAppChart extends Chart {
                 image: "paulbouwer/hello-kubernetes:1.7",
                 // image: props.image,
                 ports: [{ containerPort: 8080 }],
+                resources: {
+                  limits: {
+                    cpu: k8s.Quantity.fromString("100m"),
+                  },
+                  requests: {
+                    cpud: k8s.Quantity.fromString("100m"),
+                  },
+                },
               },
             ],
           },
